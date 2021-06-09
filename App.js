@@ -1,27 +1,19 @@
+let http = require('http');
 let fs = require('fs');
 
-fs.writeFileSync('readMe.txt','barang siapa yang berdusta kalian bohong');
+let readStream = fs.createReadStream('readMe.txt');
+let createStream = fs.createWriteStream('writeMe.txt');
 
-fs.readFile('readMe.txt', 'utf8', (err, data) => {
-    console.log(data);
-    fs.writeFileSync('writeMe.txt', `tambahan data : ${data}`);
-});
+readStream.on('data', (chunk) => {
+    console.log('new chunk recieve');
+    createStream.write(chunk);
+})
 
-setTimeout(() => {
-    fs.unlinkSync('writeMe.txt'); 
-}, 1000);
+// let server = http.createServer((req, res) => {
+//     console.log(`url : ${req.statusCode}`);
+//     res.writeHead(200, { 'Content-type': 'text/plain' });
+//     res.end('the ajidk');
+// })
 
-
-// make folder and file
-fs.mkdir('stuff', function () {
-    fs.readFile('readMe.txt', 'utf8', (err, data) => {
-        console.log(data);
-        fs.writeFileSync('./stuff/data.php', data);
-    })
-});
-
-setTimeout(() => {
-    fs.unlink('./stuff/data.php', () => {
-        fs.rmdirSync('stuff');
-    })
-}, 3000);
+// server.listen(3000, '127.0.0.1');
+// console.log(`the listen 127.0.0.1:3000`);
