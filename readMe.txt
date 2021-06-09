@@ -1,1 +1,1 @@
-yay, kebaca lur
+barang siapa yang berdusta kalian bohong

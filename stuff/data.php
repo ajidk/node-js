@@ -1,1 +1,0 @@
-yay, kebaca lur

@@ -1,12 +1,14 @@
 let fs = require('fs');
 
+fs.writeFileSync('readMe.txt','barang siapa yang berdusta kalian bohong');
+
 fs.readFile('readMe.txt', 'utf8', (err, data) => {
     console.log(data);
     fs.writeFileSync('writeMe.txt', `tambahan data : ${data}`);
 });
 
 setTimeout(() => {
-    fs.unlinkSync('writeMe.txt'); ``
+    fs.unlinkSync('writeMe.txt'); 
 }, 1000);
 
 
@@ -18,8 +20,8 @@ fs.mkdir('stuff', function () {
     })
 });
 
-// setTimeout(() => {
-//     fs.unlink('./stuff/data.php', () => {
-//         fs.rmdirSync('stuff');
-//     })
-// }, 3000);
+setTimeout(() => {
+    fs.unlink('./stuff/data.php', () => {
+        fs.rmdirSync('stuff');
+    })
+}, 3000);
