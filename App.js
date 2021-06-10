@@ -1,6 +1,12 @@
 let http = require('http');
 let fs = require('fs');
 
+// fs.readFile('index.html', 'utf8', (err, data) => {
+//     fs.writeFileSync(__dirname + '/src/api.html', data);
+//     fs.writeFileSync(__dirname + '/src/contact.html', data);
+//     fs.writeFileSync(__dirname + '/src/404.html', data);
+// })
+
 let server = http.createServer((req, res) => {
     console.log(`url : ${req.url}`);
 

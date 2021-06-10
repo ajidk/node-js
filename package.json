@@ -1,0 +1,26 @@
+{
+  "name": "learn-node-js",
+  "version": "1.0.0",
+  "description": "fun, learning",
+  "main": "App.js",
+  "scripts": {
+    "test": "fun, happy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZyferDk/node-js.git"
+  },
+  "keywords": [
+    "fun",
+    "happy"
+  ],
+  "author": "ajidk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZyferDk/node-js/issues"
+  },
+  "homepage": "https://github.com/ZyferDk/node-js#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
