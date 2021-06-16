@@ -1,0 +1,23 @@
+<%- include('partials/header.ejs') %> <%- include('partials/nav.ejs') %>
+
+<div class="container">
+  <h1 class="text-center">Contact</h1>
+  <p class="text-center">Contact the coolest cast on the web right here.</p>
+  <form>
+    <div class="mb-3">
+      <label for="person">Who do you want to contact?</label>
+      <input type="text" class="form-control" name="person" value="<%= qs.person %>">
+    </div>
+    <div class="mb-3">
+      <label for="dept">Which departement?</label>
+      <input type="text" class="form-control" name="dept" value="<%= qs.dept %>">
+    </div>
+    <div class="mb-3">
+      <label for="email">Your email!</label>
+      <input type="text" class="form-control" name="email" value="<%= qs.email %>">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<%- include('partials/footer.ejs') %>

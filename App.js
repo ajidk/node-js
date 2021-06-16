@@ -1,29 +1,28 @@
-let http = require('http');
-let fs = require('fs');
+let express = require('express');
 
-// fs.readFile('index.html', 'utf8', (err, data) => {
-//     fs.writeFileSync(__dirname + '/src/api.html', data);
-//     fs.writeFileSync(__dirname + '/src/contact.html', data);
-//     fs.writeFileSync(__dirname + '/src/404.html', data);
-// })
+let app = express();
 
-let server = http.createServer((req, res) => {
-    console.log(`url : ${req.url}`);
+app.set('view engine', 'ejs');
+app.use('/assets', express.static('assets'))
 
-    if (req.url == '/home' || req.url == '/') {
-        res.writeHead(200, { 'Content-type': 'text/html' });
-        fs.createReadStream(__dirname + '/index.html').pipe(res);
-    } else if (req.url == '/contact') {
-        res.writeHead(200, { 'Content-type': 'text/html' });
-        fs.createReadStream(__dirname + '/src/contact.html').pipe(res);
-    } else if (req.url == '/api/adk') {
-        res.writeHead(200, { 'Content-type': 'text/html' });
-        fs.createReadStream(__dirname + '/src/api.html').pipe(res);
-    } else {
-        res.writeHead(200, { 'Content-type': 'text/html' });
-        fs.createReadStream(__dirname + '/src/404.html').pipe(res);
-    }
+app.get('/', (req, res) => {
+    res.render('index');
 })
 
-server.listen(3000, '127.0.0.1');
-console.log(`the listen http://127.0.0.1:3000`);
+app.get('/contact', (req, res) => {
+    console.log(req.query);
+    res.render('contact', { qs: req.query });
+})
+
+app.get('/api', (req, res) => {
+    res.render('api');
+})
+
+app.get('/profile/:name', (req, res) => {
+    let data = { age: 37, job: 'qodrbee', hobbies: ['eating', 'swiming', 'traveling'] }
+    res.render('profile', { person: req.params.name, data: data });
+})
+
+let url = 3000;
+let data = app.listen(url);
+console.log(`visit the link : http://127.0.0.1:${url}`);
